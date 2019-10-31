@@ -16,9 +16,9 @@ function showPicked(input) {
 
 function analyze() {
   var uploadFiles = el("file-input").files;
-  if (uploadFiles.length !== 1) alert("Please select a file to analyze!");
+  if (uploadFiles.length !== 1) alert("Выберите фото для определения!");
 
-  el("analyze-button").innerHTML = "Analyzing...";
+  el("analyze-button").innerHTML = "Определяем...";
   var xhr = new XMLHttpRequest();
   var loc = window.location;
   xhr.open("POST", `${loc.protocol}//${loc.hostname}:${loc.port}/analyze`,
@@ -29,9 +29,9 @@ function analyze() {
   xhr.onload = function(e) {
     if (this.readyState === 4) {
       var response = JSON.parse(e.target.responseText);
-      el("result-label").innerHTML = `Result = ${response["result"]}`;
+      el("result-label").innerHTML = `Результат = ${response["result"]}`;
     }
-    el("analyze-button").innerHTML = "Analyze";
+    el("analyze-button").innerHTML = "Определить";
   };
 
   var fileData = new FormData();
