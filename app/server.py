@@ -70,7 +70,7 @@ async def analyze(request):
     namedict = {}
     for i in range(0,len(learn.data.classes)): namedict[learn.data.classes[i]] = classes[i]
 
-    prediction = namedict[predlabel]
+    prediction = namedict[str(predlabel)]
     return JSONResponse({'result': str(prediction)})
 
 
